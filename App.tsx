@@ -1,17 +1,10 @@
 import {NavigationContainer} from '@react-navigation/native';
-import VibrationMeter from './components/VibrationMeter';
-import {createStackNavigator} from '@react-navigation/stack';
-
-const Stack = createStackNavigator();
+import MyStack from './components/MyStack';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{headerShown: false}}
-        initialRouteName={'Home'}>
-        <Stack.Screen name={'Home'} component={VibrationMeter} />
-      </Stack.Navigator>
+      <MyStack />
     </NavigationContainer>
   );
 };
