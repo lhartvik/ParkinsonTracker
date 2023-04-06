@@ -78,11 +78,7 @@ const VibrationMeter = () => {
         newData
           ? newData.map((data: any, index: number) => (
               <Text key={index}>
-                {data.timestamp +
-                  ':' +
-                  data.vibrationData?.length +
-                  ', ~' +
-                  mean(data)}
+                {data.timestamp + ':' + data.vibrationData?.length}
               </Text>
             ))
           : [<Text>Empty</Text>],
