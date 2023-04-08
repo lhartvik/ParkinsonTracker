@@ -1,4 +1,4 @@
-package com.parkinsontracker;
+package no.hartvigsen.parkinsontracker;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

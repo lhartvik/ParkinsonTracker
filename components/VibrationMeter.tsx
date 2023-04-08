@@ -3,7 +3,7 @@ import {accelerometer, setUpdateIntervalForType} from 'react-native-sensors';
 import {Button, Text, View} from 'react-native';
 import {mean, normalize} from '../utils/math';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { pillStorageKey, shakeStorageKey } from "../utils/constants";
+import {pillStorageKey, shakeStorageKey} from '../utils/constants';
 
 enum State {
   WAITING,
