@@ -1,22 +1,37 @@
-import {useEffect} from 'react';
-import database from '@react-native-firebase/database';
-import {Text, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
+import {pillStorageKey, shakeStorageKey} from '../utils/constants';
+import {PillData, Shakedata} from '../utils/types';
+import useFirebaseStorage from '../hooks/useFirebaseStorage';
+import {useAsyncStorage} from '../hooks/useAsyncStorage';
+import Knapperad from '../UI/Knapperad';
 
 const CloudStorage = () => {
-  useEffect(() => {
-    const getData = async () => {
-      await database()
-        .ref('/test')
-        .once('value')
-        .then(snapshot => {
-          console.log('Data: ', snapshot.val());
-        });
-    };
-    getData();
-  }, []);
+  const [localPill, _saveLocalPill, clearLocalPill] =
+    useAsyncStorage(pillStorageKey);
+  const [localShake, _saveLocalShake, clearLocalShake] =
+    useAsyncStorage(shakeStorageKey);
+  const [_fbShakeData, addShakeDataToFb] = useFirebaseStorage(shakeStorageKey);
+  const [_fbPillData, addPillDataToFb] = useFirebaseStorage(pillStorageKey);
+
+  const handleUpload = async () => {
+    await addShakeDataToFb(localShake, clearLocalShake);
+    await addPillDataToFb(localPill, clearLocalPill);
+  };
+
   return (
     <View>
-      <Text>Under construction</Text>
+      <Text key={1}>Under construction</Text>
+      {localShake &&
+        localShake.map((d: Shakedata) => (
+          <Text key={d.timestamp}>ShakeData: {d.timestamp}</Text>
+        ))}
+      {localPill &&
+        localPill.map((d: PillData) => (
+          <Text key={d.timestamp}>Pilldata: {d.timestamp}</Text>
+        ))}
+      <Knapperad>
+        <Button title={'Upload'} onPress={handleUpload} />
+      </Knapperad>
     </View>
   );
 };

@@ -1,2 +1,2 @@
-export const shakeStorageKey = 'VibrationMeterShakeStorageKey';
-export const pillStorageKey = 'PillStorageKey';
+export const shakeStorageKey = 'Shakerecords';
+export const pillStorageKey = 'Pilltimes';
