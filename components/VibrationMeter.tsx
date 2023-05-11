@@ -72,29 +72,31 @@ const VibrationMeter = ({navigation}: any) => {
   return (
     <View>
       <Knapperad>
-        <Button
-          title={'Record shakes'}
-          onPress={recordShakes}
-          disabled={phase !== State.WAITING}
-        />
+        <View>
+          <Button
+            title={'Opptak'}
+            onPress={recordShakes}
+            disabled={phase !== State.WAITING}
+          />
+        </View>
         <PillLogger pillsTaken={pillsTaken} setPillsTaken={setPillsTaken} />
       </Knapperad>
       <Text>VibrationData: {rawData.length} </Text>
       <Text>snitt: {snittVisning} </Text>
       <Knapperad>
         <Button
-          title={'Save to phone'}
+          title={'Lagre til telefon'}
           onPress={handleSave}
           disabled={disableSaveOrDiscard}
         />
         <Button
-          title={'Discard data'}
+          title={'Slett denne'}
           onPress={handleDiscard}
           disabled={disableSaveOrDiscard}
         />
       </Knapperad>
       {showData}
-      <Button title={'Upload data'} onPress={handleUpload} />
+      <Button title={'Last opp'} onPress={handleUpload} />
     </View>
   );
 };

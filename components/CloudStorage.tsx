@@ -20,7 +20,7 @@ const CloudStorage = () => {
 
   return (
     <View>
-      <Text key={1}>Under construction</Text>
+      <Text key={1}>Overfør data til skyen</Text>
       {localShake &&
         localShake.map((d: Shakedata) => (
           <Text key={d.timestamp}>ShakeData: {d.timestamp}</Text>
@@ -30,7 +30,7 @@ const CloudStorage = () => {
           <Text key={d.timestamp}>Pilldata: {d.timestamp}</Text>
         ))}
       <Knapperad>
-        <Button title={'Upload'} onPress={handleUpload} />
+        <Button title={'Last opp'} onPress={handleUpload} />
       </Knapperad>
     </View>
   );

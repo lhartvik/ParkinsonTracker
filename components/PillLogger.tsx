@@ -2,7 +2,7 @@ import {Button, Text, View} from 'react-native';
 import React from 'react';
 
 type PillLoggerProps = {
-  pillsTaken: string[];
+  pillsTaken: {timestamp: string}[];
   setPillsTaken: Function;
 };
 
@@ -12,10 +12,29 @@ const PillLogger = ({pillsTaken, setPillsTaken}: PillLoggerProps) => {
     await setPillsTaken([...pillsTaken, {timestamp}]);
   };
 
+  const today = new Date();
+
+  const filteredTimestamps = pillsTaken.filter(({timestamp}) => {
+    const dag = new Date(timestamp).getDate();
+    const måned = new Date(timestamp).getMonth();
+    const år = new Date(timestamp).getFullYear();
+    return (
+      dag === today.getDate() &&
+      måned === today.getMonth() &&
+      år === today.getFullYear()
+    );
+  });
+
+  const tider = pillsTaken.map((t: {timestamp: string}) => {
+    return <Text key={`pilletid${t.timestamp}`}>{t.timestamp}</Text>;
+  });
+
   return (
     <View>
-      <Text> Pills taken: {pillsTaken.length} </Text>
-      <Button title={'Take a pill'} onPress={takeAPill} />
+      <Text> Piller: {pillsTaken.length} </Text>
+      <Text> I dag: {filteredTimestamps.length} </Text>
+      <Button title={'Ta en pille'} onPress={takeAPill} />
+      {tider}
     </View>
   );
 };

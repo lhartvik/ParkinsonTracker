@@ -6,24 +6,27 @@ const LinkPage = () => {
 
   return (
     <View>
-      <Text>Welcome to my app!</Text>
+      <Text>Velkommen til ParkinsonTracker</Text>
       <View style={styles.button}>
         <Button
-          title="Logg Parkinsonstuff"
+          color="rgba(0, 0, 0, 0)"
+          title="Logg skjelving og piller"
           // @ts-ignore
           onPress={() => navigation.navigate('VibrationMeter')}
         />
       </View>
       <View style={styles.button}>
         <Button
-          title="PillEditor"
+          color="rgba(0, 0, 0, 0)"
+          title="Se og slett pilletider"
           // @ts-ignore
           onPress={() => navigation.navigate('PillEditor')}
         />
       </View>
       <View style={styles.button}>
         <Button
-          title="Cloud storage"
+          color="rgba(0, 0, 0, 0)"
+          title="Laste opp"
           // @ts-ignore
           onPress={() => navigation.navigate('CloudStorage')}
         />

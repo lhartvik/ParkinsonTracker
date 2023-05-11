@@ -1,4 +1,4 @@
-import {Button, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {pillStorageKey} from '../utils/constants';
@@ -32,11 +32,16 @@ const PillEditor = () => {
   const pillList = pillTimes.map(ts => (
     <Button
       key={`${ts.timestamp}`}
-      title={`delete ${ts.timestamp}`}
+      title={`Slett ${ts.timestamp}`}
       onPress={() => deletePillTime(ts.timestamp)}
     />
   ));
 
-  return <View>{pillList}</View>;
+  return (
+    <View>
+      <Text>Slett pilletider:</Text>
+      {pillList}
+    </View>
+  );
 };
 export default PillEditor;
