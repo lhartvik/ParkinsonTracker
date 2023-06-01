@@ -1,5 +1,8 @@
 import {Button, Text, View} from 'react-native';
 import React from 'react';
+import {useAsyncStorage} from '../hooks/useAsyncStorage';
+import TidSiden from './TidSiden';
+import {sistePilleStorageKey} from '../utils/constants';
 
 type PillLoggerProps = {
   pillsTaken: {timestamp: string}[];
@@ -7,8 +10,10 @@ type PillLoggerProps = {
 };
 
 const PillLogger = ({pillsTaken, setPillsTaken}: PillLoggerProps) => {
+  const [sistePille, setSistePille] = useAsyncStorage(sistePilleStorageKey);
   const takeAPill = async () => {
     const timestamp = new Date().toISOString();
+    setSistePille([timestamp]);
     await setPillsTaken([...pillsTaken, {timestamp}]);
   };
 
@@ -25,16 +30,16 @@ const PillLogger = ({pillsTaken, setPillsTaken}: PillLoggerProps) => {
     );
   });
 
-  const tider = pillsTaken.map((t: {timestamp: string}) => {
-    return <Text key={`pilletid${t.timestamp}`}>{t.timestamp}</Text>;
-  });
-
   return (
     <View>
       <Text> Piller: {pillsTaken.length} </Text>
       <Text> I dag: {filteredTimestamps.length} </Text>
       <Button title={'Ta en pille'} onPress={takeAPill} />
-      {tider}
+      {sistePille.length !== 0 ? (
+        <TidSiden siste={sistePille[0]} />
+      ) : (
+        <Text> Ingen piller registrert </Text>
+      )}
     </View>
   );
 };
