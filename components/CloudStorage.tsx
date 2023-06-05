@@ -1,4 +1,4 @@
-import {Button, Text, View} from 'react-native';
+import {Button, ScrollView, Text, View} from 'react-native';
 import {pillStorageKey, shakeStorageKey} from '../utils/constants';
 import {PillData, Shakedata} from '../utils/types';
 import useFirebaseStorage from '../hooks/useFirebaseStorage';
@@ -19,20 +19,22 @@ const CloudStorage = () => {
   };
 
   return (
-    <View>
-      <Text key={1}>Overfør data til skyen</Text>
-      {localShake &&
-        localShake.map((d: Shakedata) => (
-          <Text key={d.timestamp}>ShakeData: {d.timestamp}</Text>
-        ))}
-      {localPill &&
-        localPill.map((d: PillData) => (
-          <Text key={d.timestamp}>Pilldata: {d.timestamp}</Text>
-        ))}
-      <Knapperad>
-        <Button title={'Last opp'} onPress={handleUpload} />
-      </Knapperad>
-    </View>
+    <ScrollView>
+      <View>
+        <Text key={1}>Overfør data til skyen</Text>
+        {localShake &&
+          localShake.map((d: Shakedata) => (
+            <Text key={d.timestamp}>ShakeData: {d.timestamp}</Text>
+          ))}
+        {localPill &&
+          localPill.map((d: PillData) => (
+            <Text key={d.timestamp}>Pilldata: {d.timestamp}</Text>
+          ))}
+        <Knapperad>
+          <Button title={'Last opp'} onPress={handleUpload} />
+        </Knapperad>
+      </View>
+    </ScrollView>
   );
 };
 export default CloudStorage;
