@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {accelerometer, setUpdateIntervalForType} from 'react-native-sensors';
-import {Button, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, useColorScheme, View} from 'react-native';
 import {mean, normalize} from '../utils/math';
 import {pillStorageKey, shakeStorageKey} from '../utils/constants';
 import {useAsyncStorage} from '../hooks/useAsyncStorage';
@@ -14,7 +14,8 @@ enum State {
   SAVING,
 }
 
-const VibrationMeter = ({navigation}: any) => {
+const HvorRystende = ({navigation}: any) => {
+  const isDarkMode = useColorScheme() === 'dark';
   const [pillsTaken, setPillsTaken] = useAsyncStorage(pillStorageKey);
   const [rawData, setRawData] = useState<Array<number>>([]);
   const [shakeRecords, setShakeRecords] = useAsyncStorage(shakeStorageKey);
@@ -81,8 +82,12 @@ const VibrationMeter = ({navigation}: any) => {
         </View>
         <PillLogger pillsTaken={pillsTaken} setPillsTaken={setPillsTaken} />
       </Knapperad>
-      <Text>VibrationData: {rawData.length} </Text>
-      <Text>snitt: {snittVisning} </Text>
+      <Text style={isDarkMode ? styles.textDark : styles.text}>
+        Data: {rawData.length}{' '}
+      </Text>
+      <Text style={isDarkMode ? styles.textDark : styles.text}>
+        snitt: {snittVisning}{' '}
+      </Text>
       <Knapperad>
         <Button
           title={'Lagre til telefon'}
@@ -100,4 +105,13 @@ const VibrationMeter = ({navigation}: any) => {
     </View>
   );
 };
-export default VibrationMeter;
+export default HvorRystende;
+
+const styles = StyleSheet.create({
+  text: {
+    color: 'black',
+  },
+  textDark: {
+    color: 'white',
+  },
+});

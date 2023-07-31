@@ -17,3 +17,11 @@ Tidspunkter for piller lagres rett på telefonens AsyncStorage og kan lastes opp
 
 ## Google-services.json
 For å kunne koble til Firebase må man legge en fil fra Firebase inn i android/app-folderen. Man må selv starte et prosjekt der og laste ned denne filen Settings/project settings My apps er det nedlastingslenke.
+
+## Feil
+Error: spawn ./gradlew EACCES
+at ChildProcess._handle.onexit (node:internal/child_process:283:19)
+at onErrorNT (node:internal/child_process:476:16)
+at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+### Løsning
+chmod a+rx android/gradlew

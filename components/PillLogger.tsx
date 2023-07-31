@@ -1,4 +1,4 @@
-import {Button, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, useColorScheme, View} from 'react-native';
 import React from 'react';
 import {useAsyncStorage} from '../hooks/useAsyncStorage';
 import TidSiden from './TidSiden';
@@ -10,6 +10,7 @@ type PillLoggerProps = {
 };
 
 const PillLogger = ({pillsTaken, setPillsTaken}: PillLoggerProps) => {
+  const isDarkMode = useColorScheme() === 'dark';
   const [sistePille, setSistePille] = useAsyncStorage(sistePilleStorageKey);
   const takeAPill = async () => {
     const timestamp = new Date().toISOString();
@@ -32,15 +33,33 @@ const PillLogger = ({pillsTaken, setPillsTaken}: PillLoggerProps) => {
 
   return (
     <View>
-      <Text> Piller: {pillsTaken.length} </Text>
-      <Text> I dag: {filteredTimestamps.length} </Text>
+      <Text style={isDarkMode ? styles.textDark : styles.text}>
+        {' '}
+        Piller: {pillsTaken.length}{' '}
+      </Text>
+      <Text style={isDarkMode ? styles.textDark : styles.text}>
+        {' '}
+        I dag: {filteredTimestamps.length}{' '}
+      </Text>
       <Button title={'Ta en pille'} onPress={takeAPill} />
       {sistePille.length !== 0 ? (
         <TidSiden siste={sistePille[0]} />
       ) : (
-        <Text> Ingen piller registrert </Text>
+        <Text style={isDarkMode ? styles.textDark : styles.text}>
+          {' '}
+          Ingen piller registrert{' '}
+        </Text>
       )}
     </View>
   );
 };
 export default PillLogger;
+
+const styles = StyleSheet.create({
+  text: {
+    color: 'black',
+  },
+  textDark: {
+    color: 'white',
+  },
+});

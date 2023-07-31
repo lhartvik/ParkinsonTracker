@@ -1,4 +1,4 @@
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Button, StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 const LinkPage = () => {
@@ -6,13 +6,12 @@ const LinkPage = () => {
 
   return (
     <View>
-      <Text>Velkommen til ParkinsonTracker</Text>
       <View style={styles.button}>
         <Button
           color="rgba(0, 0, 0, 0)"
           title="Logg skjelving og piller"
           // @ts-ignore
-          onPress={() => navigation.navigate('VibrationMeter')}
+          onPress={() => navigation.navigate('Hvor rystende')}
         />
       </View>
       <View style={styles.button}>
@@ -20,7 +19,7 @@ const LinkPage = () => {
           color="rgba(0, 0, 0, 0)"
           title="Se og slett pilletider"
           // @ts-ignore
-          onPress={() => navigation.navigate('PillEditor')}
+          onPress={() => navigation.navigate('Redigere Pilletider')}
         />
       </View>
       <View style={styles.button}>
