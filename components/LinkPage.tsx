@@ -25,6 +25,14 @@ const LinkPage = () => {
       <View style={styles.button}>
         <Button
           color="rgba(0, 0, 0, 0)"
+          title="Medisin og styrke"
+          // @ts-ignore
+          onPress={() => navigation.navigate('Innstillinger')}
+        />
+      </View>
+      <View style={styles.button}>
+        <Button
+          color="rgba(0, 0, 0, 0)"
           title="Laste opp"
           // @ts-ignore
           onPress={() => navigation.navigate('CloudStorage')}

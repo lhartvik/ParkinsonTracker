@@ -2,7 +2,7 @@ import {Button, StyleSheet, Text, useColorScheme, View} from 'react-native';
 import React from 'react';
 import {useAsyncStorage} from '../hooks/useAsyncStorage';
 import TidSiden from './TidSiden';
-import {sistePilleStorageKey} from '../utils/constants';
+import { medisinStorageKey, sistePilleStorageKey } from "../utils/constants";
 
 type PillLoggerProps = {
   pillsTaken: {timestamp: string}[];
@@ -12,10 +12,11 @@ type PillLoggerProps = {
 const PillLogger = ({pillsTaken, setPillsTaken}: PillLoggerProps) => {
   const isDarkMode = useColorScheme() === 'dark';
   const [sistePille, setSistePille] = useAsyncStorage(sistePilleStorageKey);
+  const [medisin] = useAsyncStorage(medisinStorageKey);
   const takeAPill = async () => {
     const timestamp = new Date().toISOString();
     setSistePille([timestamp]);
-    await setPillsTaken([...pillsTaken, {timestamp}]);
+    await setPillsTaken([...pillsTaken, {timestamp, medisin}]);
   };
 
   const today = new Date();
