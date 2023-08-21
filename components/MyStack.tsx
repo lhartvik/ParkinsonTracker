@@ -3,7 +3,7 @@ import HvorRystende from './HvorRystende';
 import PillEditor from './PillEditor';
 import LinkPage from './LinkPage';
 import CloudStorage from './CloudStorage';
-import Innstillinger from "./Innstillinger";
+import DagligMedisinplan from './DagligMedisinplan';
 
 const Stack = createStackNavigator();
 
@@ -14,7 +14,7 @@ const MyStack = () => {
       <Stack.Screen name="Hvor rystende" component={HvorRystende} />
       <Stack.Screen name="Redigere Pilletider" component={PillEditor} />
       <Stack.Screen name="CloudStorage" component={CloudStorage} />
-      <Stack.Screen name="Innstillinger" component={Innstillinger} />
+      <Stack.Screen name="Daglig Medisinplan" component={DagligMedisinplan} />
     </Stack.Navigator>
   );
 };

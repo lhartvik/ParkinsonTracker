@@ -25,9 +25,9 @@ const LinkPage = () => {
       <View style={styles.button}>
         <Button
           color="rgba(0, 0, 0, 0)"
-          title="Medisin og styrke"
+          title="Medisinplan"
           // @ts-ignore
-          onPress={() => navigation.navigate('Innstillinger')}
+          onPress={() => navigation.navigate('Daglig Medisinplan')}
         />
       </View>
       <View style={styles.button}>

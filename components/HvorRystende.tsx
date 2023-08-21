@@ -17,7 +17,6 @@ enum State {
 const HvorRystende = ({navigation}: any) => {
   const isDarkMode = useColorScheme() === 'dark';
   const [pillsTaken, setPillsTaken] = useAsyncStorage(pillStorageKey);
-  const [calmPeriod, setCalmPeriod] = useAsyncStorage(pillStorageKey);
   const [rawData, setRawData] = useState<Array<number>>([]);
   const [shakeRecords, setShakeRecords] = useAsyncStorage(shakeStorageKey);
 
