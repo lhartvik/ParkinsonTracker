@@ -28,7 +28,7 @@ at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
 chmod a+rx android/gradlew
 
 # Installasjon
-Inntil jeg får lagt det ut på Android store må man innstallere Android Studio og deploye appen til telefon, som har aktivert utviklermodus og åpnet tilgang.
+Inntil jeg får lagt det ut på Android store må man installere Android Studio og deploye appen til telefon, som har aktivert utviklermodus og åpnet tilgang.
 
 # Iphone
 Ikke støttet ennå
