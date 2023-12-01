@@ -27,6 +27,10 @@ at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
 ### Løsning
 chmod a+rx android/gradlew
 
+# Videre analyse av de lagrede dataene
+[Annet repo med litt Python og litt Java](https://github.com/lhartvik/fftshakedatautkast)
+
+
 # Installasjon
 Inntil jeg får lagt det ut på Android store må man installere Android Studio og deploye appen til telefon, som har aktivert utviklermodus og åpnet tilgang.
 
